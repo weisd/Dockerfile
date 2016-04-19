@@ -1,0 +1,11 @@
+{{ docker.from("base", "centos-7") }}
+
+{{ docker.version() }}
+
+{{ docker.environmentApp() }}
+
+{{ docker.copy('conf/', '/opt/docker/') }}
+
+{{ baseapp.centos() }}
+
+{{ docker.cmd("supervisord") }}
