@@ -13,6 +13,8 @@ RUN locale-gen en_US.UTF-8
 ENV LANG       en_US.UTF-8
 ENV LC_ALL     en_US.UTF-8
 
+COPY sources.list /etc/apt/sources.list
+
 # Add baselayout (from baselayout/)
 ADD baselayout.tar /
 
@@ -25,6 +27,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && /usr/local/bin/apt-upgrade \
     # Install base stuff
     && /usr/local/bin/apt-install \
+        build-essential \
         software-properties-common \
         lsb-release \
         ca-certificates \
